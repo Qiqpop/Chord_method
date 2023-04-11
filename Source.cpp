@@ -6,12 +6,13 @@ double f(double x) {
 }
 
 double findRoot(double a, double b, double epsilon) {
-    while (abs(b - a) > epsilon) {
-        a = a - (b - a) * f(a) / (f(b) - f(a));
-        b = b - (a - b) * f(b) / (f(a) - f(b));
+    double tmp = b;
+    while (abs(tmp - a) > epsilon) {
+        tmp = a;
+        a = a - (a - b) * f(a) / (f(a) - f(b));
     }
 
-    return b;
+    return a;
 }
 
 int main() {
